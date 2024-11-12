@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cart</h1>
+  <div class="container">
+    <div class="row">
+      <% @cart_items.each do |cart_item| %>
+        <div class="col-md-3 mb-4"> <!-- 4 columns per row on medium+ screens -->
+          <div class="card h-100" style="width: 100%; max-width: 100%; min-height: 400px;">
+            <img class="card-img-top" src="<%= cart_item.product.image %>" alt="Product image" style="height: 150px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title"><%= cart_item.product.title %></h5>
+              <p class="card-text"><%= truncate(cart_item.product.description, length: 50) %></p>
+              <p class="card-text"><strong>Price:</strong> $<%= cart_item.product.price %></p>
+              <p class="card-title"><strong>Quantity:</strong> <%= cart_item.quantity %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+<br>
+
+<%= link_to 'Back', products_path, class: 'btn btn-success' %>

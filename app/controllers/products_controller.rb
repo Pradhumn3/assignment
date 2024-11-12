@@ -76,7 +76,11 @@ class ProductsController < ApplicationController
       end
       @cart_item.save
     end
-    redirect_to products_path, notice: 'Product added to cart!'
+    redirect_to view_cart_path, notice: 'Product added to cart!'
+  end
+
+  def view_cart
+    @cart_items = Cart.first.cart_items
   end
 
   private
